@@ -6,14 +6,18 @@ import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { HEADERS, BASE_URL_USER_AUTHENTICATION } from "../Constants/Constant";
+import { HEADERS, BASE_URL_USER_AUTHENTICATION } from "../utilities/Constant";
+import { useNavigate } from "react-router-dom";
+import { ChatState } from "../Context/ChatContext";
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
-  const [userName, setUserName] = useState();
-  const [password, setPassword] = useState();
+  const [userName, setUserName] = useState("pramod");
+  const [password, setPassword] = useState("pramod@123");
+  const navigate =  useNavigate();
+  const {setUser} = ChatState();
 
   const signIn = async () => {
     if (!userName || !password) {
@@ -36,6 +40,9 @@ const Login = () => {
           HEADERS,
       )
       .then((res) => {
+        setUser(res?.data);
+        localStorage.setItem("isAuthenticated", res?.data?.isAuthenticated)
+        localStorage.setItem("userInfo", JSON.stringify(res?.data));
         toast({
           title: res.data.message,
           status: "success",
@@ -43,6 +50,7 @@ const Login = () => {
           isClosable: true,
           position: "top-right",
         });
+       navigate("/chatwindow");
       })
       .catch((err) => {
         toast({

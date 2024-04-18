@@ -14,7 +14,7 @@ const MessageContainer = ({ messages }) => {
     }
   }, [messages]);
   return (
-    <div ref={messageRef} className="message-container" style={{backgroundColor: "green"}}>
+    <div ref={messageRef} className="message-container" style={{width: "80%", backgroundColor: "lightgray"}}>
       {messages.map((m, index) => (
         <div key={index} className="user-message">
           <div className="message">{m.message}</div>

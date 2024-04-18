@@ -1,9 +1,9 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import MessageContainer from "./MessageContainer";
 import SendMessageForm from "./SendMessageForm";
 
-const ChatRoom = ({ sendMessage, messages, users, closeConnection }) => {
+const ChatRoom = ({ sendMessage, messages, closeConnection }) => {
   return (
     <Box
       display="flex"
@@ -11,7 +11,7 @@ const ChatRoom = ({ sendMessage, messages, users, closeConnection }) => {
       flexDir="column"
       p={3}
       bg="white"
-      w={{ base: "100%", md: "100%" }}
+      width="100%"
       borderRadius="lg"
       borderWidth="1px"
       backgroundColor="beige"
@@ -26,7 +26,12 @@ const ChatRoom = ({ sendMessage, messages, users, closeConnection }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        Chat room
+        <div>Chat room</div>
+        <div alignItems>
+          <Button colorScheme="red" onClick={closeConnection}>
+            Leave Room
+          </Button>
+        </div>
       </Box>
       <MessageContainer messages={messages} />
       <SendMessageForm sendMessage={sendMessage} />

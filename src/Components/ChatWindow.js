@@ -68,7 +68,7 @@ const ChatWindow = () => {
   };
 
   return (
-    <div style={{ width: "100%" }}>
+    <>
       {user && <SideDrawer />}
       <Box
         display="flex"
@@ -83,12 +83,11 @@ const ChatWindow = () => {
           <ChatRoom
             sendMessage={sendMessage}
             messages={messages}
-            users={users}
             closeConnection={closeConnection}
           />
         )}
       </Box>
-    </div>
+      </>
   );
 };
 

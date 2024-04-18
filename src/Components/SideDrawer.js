@@ -33,7 +33,7 @@ const SideDrawer = () => {
         borderWidth="5px"
       >
         <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+          Talk-N-Talk
         </Text>
           <Menu>
             <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>

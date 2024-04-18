@@ -61,12 +61,13 @@ hr.line {
 
 .message {
     display: inline-flex;
-    margin: 0px auto 0px auto;
+    margin: 2px 2px 2px 2px;
     padding: 5px;
     font-size: 18px;
     color:black;
-    border-radius: 20px;
+    border-radius: 8px;
     margin-top: 3px;
+    background-color: cadetblue;
 }
 
 .from-user {

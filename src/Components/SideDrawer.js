@@ -19,7 +19,7 @@ const SideDrawer = () => {
     localStorage.removeItem("userInfo");
     navigate("/");
   };
-  const {setSelectedChat,user, notification, setNotification, chats, setChats} = ChatState();
+  const {user} = ChatState();
 
   return (
     <>

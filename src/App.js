@@ -2,6 +2,7 @@ import "./App.css";
 import ChatWindow from "./Components/ChatWindow";
 import Homepage from "./Components/HomePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ProtectedRout } from "./Components/ProtectedRout";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chatwindow",
-    element: <ChatWindow />
+    element: <ProtectedRout> <ChatWindow /></ProtectedRout>
   },
 ]);
 function App() {

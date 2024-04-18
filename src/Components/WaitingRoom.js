@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Box, Stack } from "@chakra-ui/react";
 import { FormControl, Input, Button } from "@chakra-ui/react";
+import { ChatState } from "../Context/ChatContext";
 
 const WaitingRoom = ({ joinChat }) => {
-  const [userName, setUserName] = useState();
+  const {user} = ChatState();
+  const [userName, setUserName] = useState(user.userName);
   const [chatRoom, setChatRoom] = useState();
 
   const joinChatHandler = () => {
@@ -49,7 +51,9 @@ const WaitingRoom = ({ joinChat }) => {
               variant="filled"
               background="#E0E0E0"
               placeholder="Enter name"
-              onChange={(e) => setUserName(e.target.value)}
+              value={user.userName}
+              disabled = "true"
+              color="green"
             />
           </FormControl>
           <FormControl id="first-name" isRequired mt={3}>

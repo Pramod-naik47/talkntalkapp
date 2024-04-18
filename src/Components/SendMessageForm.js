@@ -5,14 +5,12 @@ import { FormControl, InputGroup, Input, InputRightElement, Button, VStack} from
 const SendMessageForm = ({ sendMessage }) => {
   const [message, setMessage] = useState("");
   return (
-    // <VStack spacing="10px" style={{width: "80%"}}>
     <>
       <Form onSubmit={e => {
             e.preventDefault();
             sendMessage(message);
             setMessage('');
         }}>
-        {/* <FormControl key="message-form"> */}
           <InputGroup size="md" style={{width: "100%", borderColor:"black"}}>
             <Input
               pr='4.5rem'
@@ -26,9 +24,7 @@ const SendMessageForm = ({ sendMessage }) => {
               <Button h="1.75rem" size="sm" type="submit" disabled={!message} colorScheme="teal">Send</Button>
             </InputRightElement>
           </InputGroup>
-        {/* </FormControl> */}
       </Form>
-    {/* </VStack> */}
     </>
   );
 };

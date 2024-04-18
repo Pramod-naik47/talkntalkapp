@@ -27,7 +27,7 @@ const ChatRoom = ({ sendMessage, messages, closeConnection }) => {
         alignItems="center"
       >
         <div>Chat room</div>
-        <div alignItems>
+        <div>
           <Button colorScheme="red" onClick={closeConnection}>
             Leave Room
           </Button>

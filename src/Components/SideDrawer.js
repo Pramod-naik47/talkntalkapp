@@ -12,14 +12,15 @@ import {
 } from "@chakra-ui/menu";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../Context/ChatContext";
+import UserProfile from "./UserProfile";
 
 const SideDrawer = () => {
-    const navigate =  useNavigate();
+  const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
     navigate("/");
   };
-  const {user} = ChatState();
+  const { user } = ChatState();
 
   return (
     <>
@@ -35,19 +36,23 @@ const SideDrawer = () => {
         <Text fontSize="2xl" fontFamily="Work sans">
           Talk-N-Talk
         </Text>
-          <Menu>
-            <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
-              <Avatar
-                size="sm"
-                cursor="pointer"
-                name={user.name}
-                src={user.pic}
-              />
-            </MenuButton>
-            <MenuList>
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-            </MenuList>
-          </Menu>
+        <Menu>
+          <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
+            <Avatar
+              size="sm"
+              cursor="pointer"
+              name={user.name}
+              src={user.pic}
+            />
+          </MenuButton>
+          <MenuList>
+            <UserProfile user={user}>
+              <MenuItem>My Profile</MenuItem>
+            </UserProfile>
+            <MenuDivider />
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </MenuList>
+        </Menu>
       </Box>
     </>
   );

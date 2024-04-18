@@ -2,13 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Box, Stack } from "@chakra-ui/react";
 import { FormControl, Input, Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatContext";
+import { useToast } from "@chakra-ui/react";
 
 const WaitingRoom = ({ joinChat }) => {
   const {user} = ChatState();
   const [userName, setUserName] = useState(user.userName);
   const [chatRoom, setChatRoom] = useState();
+  const toast = useToast();
 
   const joinChatHandler = () => {
+    if (!chatRoom) {
+      toast({
+        title: "Please enter chat room!!!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      return;
+    }
     joinChat(userName, chatRoom);
   };
 
@@ -46,21 +58,23 @@ const WaitingRoom = ({ joinChat }) => {
         overflowY="hidden"
       >
         <Stack>
-          <FormControl id="first-name" isRequired mt={3}>
+          <FormControl  key="user-name" isRequired mt={3}>
             <Input
+              key="user-name-input"
               variant="filled"
               background="#E0E0E0"
               placeholder="Enter name"
               value={user.userName}
-              disabled = "true"
+              disabled = {true}
               color="green"
             />
           </FormControl>
-          <FormControl id="first-name" isRequired mt={3}>
+          <FormControl key="chat-room" isRequired mt={3}>
             <Input
               variant="filled"
               background="#E0E0E0"
               placeholder="Enter chat room name"
+              key="chat-room-input"
               onChange={(e) => setChatRoom(e.target.value)}
             />
           </FormControl>

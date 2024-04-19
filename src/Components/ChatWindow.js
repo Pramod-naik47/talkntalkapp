@@ -18,7 +18,7 @@ const ChatWindow = () => {
   const joinChatRoom = async (userName, chatRoom) => {
     try {
       const connection = new HubConnectionBuilder()
-        .withUrl(BASE_URL_TALKNTALK + "/chat")
+        .withUrl(BASE_URL_TALKNTALK + "/chat",{ accessTokenFactory: () => user.token })
         .configureLogging(LogLevel.Information)
         .build();
 

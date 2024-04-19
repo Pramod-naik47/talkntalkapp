@@ -16,11 +16,15 @@ import UserProfile from "./UserProfile";
 
 const SideDrawer = () => {
   const navigate = useNavigate();
+  const { user, setUser } = ChatState();
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
+    setUser(null);
     navigate("/");
   };
-  const { user } = ChatState();
+
 
   return (
     <>
